@@ -4,7 +4,7 @@ function setup() {
 }
 
 function draw() {
-  background('purple') ;
+  background('red') ;
   fill('black') ;
   textSize(32) ;
   text("Yay! It's working!", 250, 250) ;
