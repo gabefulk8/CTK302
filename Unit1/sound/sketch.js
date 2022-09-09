@@ -25,6 +25,6 @@ function mouseReleased() {
   if (s1.isPlaying()) {
     s1.pause();
   } else {
-    s1.resume();
+    s1.play();
   }
 }
