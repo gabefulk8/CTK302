@@ -11,7 +11,6 @@ function setup() {
   createCanvas(500, 500);
   textAlign(CENTER);
   s1.play();
-
 }
 
 function draw() {
@@ -26,6 +25,6 @@ function mouseReleased() {
   if (s1.isPlaying()) {
     s1.pause();
   } else {
-    s1.play();
+    s1.resume();
   }
 }
