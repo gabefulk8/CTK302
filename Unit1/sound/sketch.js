@@ -23,7 +23,7 @@ function draw() {
 
 
 function mouseReleased() {
-  if (s1.isPlaying() == true) {
+  if (s1.isPlaying()) {
     s1.pause();
   } else {
     s1.play();
