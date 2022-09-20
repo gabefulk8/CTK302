@@ -4,6 +4,7 @@ let x = 0;
 let txt = "Sweet Home Alabama";
 let font;
 let state = 0;
+let v = 2;
 
 function setup() {
   createCanvas(500, 500);
@@ -18,7 +19,7 @@ function draw() {
     fill("black");
     text(txt, x, 200);
   
-    x += 2;
+    x += v;
 
     if (x > width) {
       x = 0; 
@@ -32,7 +33,7 @@ function draw() {
     fill("black");
     text(txt, x, 200);
   
-    x += 2;
+    x += v;
 
     if (x > width) {
       x = 0; 
@@ -48,7 +49,7 @@ function draw() {
     fill("black");
     text(txt, x, 200);
   
-    x += 2;
+    x += v;
 
     if (x > width) {
       x = 0; 
@@ -63,7 +64,7 @@ function draw() {
     fill("black");
     text(txt, x, 200);
   
-    x += 2;
+    x += v;
 
     if (x > width) {
       x = 0; 
