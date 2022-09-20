@@ -1,13 +1,13 @@
 /// <reference path="../../libs/TSDef/p5.global-mode.d.ts" /> 
 
-let x = 0;
+let x = -400;
 let txt = "Sweet Home Alabama";
 let f1;
 let state = 0;
-let v = 2;
+let v = 3;
 
 function setup() {
-  createCanvas(750, 500);
+  createCanvas(500, 500);
   f1 = loadFont("assets/qwitcherReg.ttf");
 }
 
@@ -23,7 +23,7 @@ function draw() {
     x += v;
 
     if (x > width) {
-      x = 0; 
+      x = -550; 
       txt = "Where the skies are so Blue"; 
       state = 1;
     }
@@ -37,7 +37,7 @@ function draw() {
     x += v;
 
     if (x > width) {
-      x = 0; 
+      x = -400; 
       txt = "Sweet Home Alabama"; 
       state = 2;
     }
@@ -52,7 +52,7 @@ function draw() {
     x += v;
 
     if (x > width) {
-      x = 0; 
+      x = -550; 
       txt = "Lord I'm comin' home to you"; 
       state = 3;
     }
@@ -66,7 +66,7 @@ function draw() {
     x += v;
 
     if (x > width) {
-      x = 0; 
+      x = -400; 
       txt = "Sweet Home Alabama"; 
       state = 0;
     }
