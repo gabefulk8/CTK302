@@ -1,9 +1,22 @@
+let x = 0;
+let v = 2;
+
 function setup() {
   createCanvas(500, 500);
 }
 
 function draw() {
+  background(225);
+  
+  push();
+  translate(x, 0);
   avatar();
+  x += 5;
+
+  if (x > width - 200) {
+    x = -300;
+  }
+  pop();
 }
 
 function avatar() {
