@@ -31,26 +31,28 @@ function draw() {
   
   switch (state) {
     case 0: //green
-      v = 5;
+      v = 8;
       fill("green");
       ellipse(width/2, height/2 - 170, 150, 150);
       break;
 
     case 1: //yellow
-      v = 2;
+      v = 4;
       fill("yellow");
       ellipse(width/2, height/2, 150, 150);
       break;
 
     case 2: //red
-      v = 0;
+      if (x > (width/2 -5) && x < (width/2 + 5)) {
+        v = 0;
+      }
       fill("red");
       ellipse(width/2, height/2 + 170, 150, 150);
       break;
   }
   
   timer++;
-  if (timer > 180) {
+  if (timer > 240) {
     state ++;
     timer = 0;
     if (state > 2)  {
