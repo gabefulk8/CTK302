@@ -4,16 +4,19 @@ let lights;
 let sepways;
 let wheel;
 
-function setup() {
-  createCanvas(600, 600);
-  textAlign(CENTER);
-  textSize(32);
-  imageMode(CENTER);
+function preload() {
   img = loadImage('assets/revalation.jpg');
 
   lights = loadSound('assets/Lights.mp3');
   sepways = loadSound('assets/SeparateWays.mp3');
   wheel = loadSound('assets/Wheel.mp3');
+}
+
+function setup() {
+  createCanvas(600, 600);
+  textAlign(CENTER);
+  textSize(32);
+  imageMode(CENTER);
 }
 
 function draw() {  
