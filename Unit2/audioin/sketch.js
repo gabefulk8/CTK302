@@ -1,13 +1,24 @@
 var mic;
 var vol = 0;
 var approachingVol = 0;
+var far;
+var lessfar;
+var closer;
+var moreclose;
 
 // variables that you might want to tweak
 let theLoudestItGets = 0.2; // check your mic inputs and see how loud it gets, put it here.
 var ease = 0.08; // how responsive do you want this? Higher numbers mean faster response.
 
+function preload() {
+  far = loadImage('assets/mmfar.jpg');
+  lessfar = loadImage('assets/mmnotfar.jpg');
+  closer = loadImage('assets/mmclose.jpg');
+  moreclose = loadImage('assets/mmface.jpg');
+}
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 800);
 
   // code for initializing mic in.
   mic = new p5.AudioIn(); // what does "new" mean?
@@ -15,8 +26,6 @@ function setup() {
 }
 
 function draw() {
-  background("green");
-
   // get the sound input
   vol = mic.getLevel(); // returned level is between 0 and 1
 
@@ -24,7 +33,8 @@ function draw() {
   approachingVol += (vol - approachingVol) * ease;
 
   // text on the screen for debugging
-  textSize(18);
+  textSize(32);
+  textAlign(CENTER);
   text(
     "Click the screen first to give\npermission for mic input.\nMy volume is " +
       vol.toFixed(3) +
@@ -49,16 +59,24 @@ function draw() {
   text("z = " + z, 300, 20);
   switch (z) {
     case 0:
-      text("case 0", 100, 350);
+      background(far);
+      fill("white");
+      text("Shhh, don't make too much noise or he'll hear you.", width/2, height/4 * 3);
       break;
     case 1:
-      text("case 1", 100, 350);
+      background(lessfar);
+      fill("white");
+      text("Quiet down! He's getting closer!", width/2, height/4 * 3);
       break;
     case 2:
-      text("case 2", 100, 350);
+      background(closer);
+      fill("white");
+      text("Seriously! Put a sock in it if you want to live...", width/2, height/4 * 3);
       break;
     default:
-      text("case 3", 100, 350);
+      background(moreclose);
+      fill("red");
+      text("RUN", width/2, height/4 * 3);
       break;
   }
 }
