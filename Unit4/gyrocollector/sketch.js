@@ -6,10 +6,8 @@ var z = 0;
 var xPosition = 0;
 var yPosition = 0;
 
-// var bunnyImage;
-var cars = [];
-var frogPos;
-
+var catImage;
+var myFont;
 
 function setup() {
 
@@ -20,25 +18,21 @@ function setup() {
   beta = 0;
   gamma = 0;
 
-
-  // spawn a bunch of cars
-  for (var i = 0; i < 40; i++) {
-    cars.push(new Car());
-  }
-
   // initialize the frog's position
   frogPos = createVector(width / 2, height - 80);
 
   // load any images you need
-  //bunnyImage = loadImage("assets/bunny.jpg");
+  catImage = loadImage("assets/vibeCat.jpeg");
   imageMode(CENTER);
   rectMode(CENTER);
   noStroke();
+
+  myFont = loadFont("assets/oCat.otf");
 }
 
 function draw() {
 
-  background('#c6f5ff'); // light blue
+  background(white);
 
   // the map command !!!!
   // takes your variable and maps it from range 1 to range 2
@@ -53,8 +47,7 @@ function draw() {
   //  rotate(radians(alpha)); // using alpha in here so it doesn't feel bad
 
   // draw the FROG
-  // image(bunnyImage, 0, 0, 500, 500);
-  fill('green');
+  image(catImage, 0, 0, 500, 500);
   ellipse(0, 0, 80, 80);
   pop();
 
@@ -63,24 +56,16 @@ function draw() {
   frogPos.x = xPosition;
   frogPos.y = yPosition;
 
-  // iterate through the car loop to move them and see if we need to delete cars
-  for (var i = 0; i < cars.length; i++) {
-    cars[i].display();
-    cars[i].drive();
-    if (cars[i].pos.dist(frogPos) < 50) {
-      cars.splice(i, 1);
-    }
-  }
-
   // MORE DECORATIONS - write that pretty ATK type on top.
-  fill('white');
+  fill('black');
   textSize(40);
   textAlign(CENTER);
-  text("your words or image here!", width / 2, 600, windowWidth - 200, windowHeight - 200);
+  textFont(myFont);
+  text("Vibe Cat", width / 2, 600, windowWidth - 200, windowHeight - 200);
 
-
-  // Debugging information -- take this out when you're ready for production!
-  // Just a bunch of text commands to display data coming in from addEventListeners
+  /*
+  Debugging information -- take this out when you're ready for production!
+  Just a bunch of text commands to display data coming in from addEventListeners
   textAlign(LEFT);
   textSize(20);
   fill('black');
@@ -95,18 +80,10 @@ function draw() {
   text("x = " + x, 25, 150); // .toFixed means just show (x) decimal places
   text("y = " + y, 25, 170);
   text("z = " + z, 25, 190);
+  */
 
 
 }
-
-function deviceShaken() {
-  // re-spawn cars
-  cars = []; // clear the array first
-  for (var i = 0; i < 40; i++) {
-    cars.push(new Car());
-  }
-}
-
 
 // HERE'S THE STUFF YOU NEED FOR READING IN DATA!!!
 
@@ -125,41 +102,3 @@ window.addEventListener('devicemotion', function(e) {
   y = e.acceleration.y;
   z = e.acceleration.z;
 });
-
-
-
-
-
-// car class!!
-function Car() {
-  // attributes
-  this.pos = createVector(100, 100);
-  this.vel = createVector(random(-5, 5), random(-5, 5));
-  this.r = random(255);
-  this.g = random(255);
-  this.b = random(255);
-  this.a = random(255);  // alpha opacity value for fill!
-
-
-  // methods
-  this.display = function() {
-
-    // maybe use an image here instead!
-    fill(this.r, this.g, this.b, this.a);
-    ellipse(this.pos.x - 50, this.pos.y, 50, 50);
-    ellipse(this.pos.x + 50, this.pos.y, 50, 50);
-    rect(this.pos.x + 17, this.pos.y - 30, 80, 60) ;
-
-  }
-
-  this.drive = function() {
-    this.pos.add(this.vel);
-
-    if (this.pos.x > width) this.pos.x = 0;
-    if (this.pos.x < 0) this.pos.x = width;
-    if (this.pos.y > height) this.pos.y = 0;
-    if (this.pos.y < 0) this.pos.y = height;
-
-  }
-
-}
