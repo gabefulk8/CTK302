@@ -1,35 +1,22 @@
-// Note - use your own APPID to get this to work!
-
 let weather;
-let weatherID = 0; // returned in the JSON weather element
 let state = 0;
 let x = 0;
 let temperature = 0;
 let sunny;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
 
   sunny = loadImage("assets/weather.png");
-
-  // HERE is the call to get the weather. We build the string first.
-
-  let myCityString = "https://api.openweathermap.org/data/2.5/weather?lat=40.195&lon=-88.404&appid=23855a3dd622ce6eb6c2222ffd51c832";
-
-  //You can also use "zipcode"
-  // substitute zip=61820 for q=Normal,IL,US
   
-  let myIDString = "appid=23855a3dd622ce6eb6c2222ffd51c832" ;
+  let myTotalString = "https://api.openweathermap.org/data/2.5/weather?lat=40.195&lon=-88.404&appid=23855a3dd622ce6eb6c2222ffd51c832&units=imperial";
 
-  let myTotalString = myCityString + myIDString;
-  
-
-  loadJSON(myTotalString, gotData); // that gotData function happens when JSON comes back.
+  loadJSON(myTotalString, gotData); 
 }
 
 function gotData(data) {
   weather = data;
-  print(weather); // for debugging purposes, print out the JSON data when we get it.
+  print(weather); 
   temperature = weather.main.temp;
 }
 
@@ -45,23 +32,23 @@ function draw() {
     case 1:
       background(sunny);
       fill("black");
-      textSize(40);
-      text("What is the weather in " + weather.name + "?", 20, 20);
+      textSize(28);
+      text("What is the weather in " + weather.name + ", IL?", 20, 30);
       textSize(20);
-      text("Windspeed is " + weather.wind.speed, 20, 60);
-      text("Forecast is " + weather.weather.description, 20, 80);
-      text("Temperature is " + temperature, 20, 100);
+      text("Forecast is " + weather.weather[0].description, 20, 60);
+      text("Temperature is " + round(temperature) + "°F", 20, 80);
+      text("Feels like " + round(weather.main.feels_like) + "°F", 20, 100);
       
-      /*
-      scale based on temp
       
-      rect();
+      //scale based on temp
+      fill('#ba555c')
+      noStroke();
+      rect(418, 308, 22, -temperature);
+      let x = round(temperature);
+      fill('black');
+      textSize(18);
+      text(x + "°", 417, 328);
 
-      https://openweathermap.org/current#current_JSON
-
-      https://openweathermap.org/city/4900885
-
-      */
       break;
   }
 }
