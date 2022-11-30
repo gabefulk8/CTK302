@@ -23,7 +23,7 @@ function setup() {
   imageMode(CENTER);
   noStroke();
 
-  myFont = loadFont("assets/oCat.otf");
+  myFont = loadFont("assets/oCat.ttf");
 }
 
 function draw() {
@@ -53,7 +53,7 @@ function draw() {
 
   // MORE DECORATIONS - write that pretty ATK type on top.
   fill('black');
-  textSize(80);
+  textSize(100);
   textAlign(CENTER);
   textFont(myFont);
   text("Vibe Cat", width/2, height/2);
