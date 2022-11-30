@@ -45,7 +45,6 @@ function draw() {
 
   // draw the FROG
   image(catImage, 0, 0, 500, 500);
-  ellipse(0, 0, 80, 80);
   pop();
 
 
@@ -58,28 +57,7 @@ function draw() {
   textSize(40);
   textAlign(CENTER);
   textFont(myFont);
-  text("Vibe Cat", width / 2, 600, windowWidth - 200, windowHeight - 200);
-
-  /*
-  Debugging information -- take this out when you're ready for production!
-  Just a bunch of text commands to display data coming in from addEventListeners
-  textAlign(LEFT);
-  textSize(20);
-  fill('black');
-  text("orientation data:", 25, 25);
-  textSize(15);
-  text("alpha: " + alpha, 25, 50);
-  text("beta: " + beta, 25, 70);
-  text("gamma: " + gamma, 25, 90);
-  textSize(20);
-  text("acceleration data:", 25, 125);
-  textSize(15);
-  text("x = " + x, 25, 150); // .toFixed means just show (x) decimal places
-  text("y = " + y, 25, 170);
-  text("z = " + z, 25, 190);
-  */
-
-
+  text("Vibe Cat", width/2, height/2);
 }
 
 // HERE'S THE STUFF YOU NEED FOR READING IN DATA!!!
