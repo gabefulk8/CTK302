@@ -18,9 +18,6 @@ function setup() {
   beta = 0;
   gamma = 0;
 
-  // initialize the frog's position
-  frogPos = createVector(width / 2, height - 80);
-
   // load any images you need
   catImage = loadImage("assets/vibeCat.jpeg");
   imageMode(CENTER);
@@ -32,7 +29,7 @@ function setup() {
 
 function draw() {
 
-  background(white);
+  background('white');
 
   // the map command !!!!
   // takes your variable and maps it from range 1 to range 2
@@ -53,8 +50,8 @@ function draw() {
 
 
   // update the frog's position using the accelerometer data
-  frogPos.x = xPosition;
-  frogPos.y = yPosition;
+  catImage.x = xPosition;
+  catImage.y = yPosition;
 
   // MORE DECORATIONS - write that pretty ATK type on top.
   fill('black');
