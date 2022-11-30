@@ -3,12 +3,16 @@ let state = 0;
 let x = 0;
 let temperature = 0;
 let sunny;
+let myFont; 
 
 function setup() {
   createCanvas(600, 600);
 
   sunny = loadImage("assets/weather.png");
-  
+  myFont = loadFont("assets/newsFont.ttf");
+
+  textFont(myFont);
+
   let myTotalString = "https://api.openweathermap.org/data/2.5/weather?lat=40.195&lon=-88.404&appid=23855a3dd622ce6eb6c2222ffd51c832&units=imperial";
 
   loadJSON(myTotalString, gotData); 
